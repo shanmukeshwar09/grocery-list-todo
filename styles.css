@@ -1,0 +1,76 @@
+*,
+::before,
+::after {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(158, 210, 235, 0.5);
+}
+
+.container {
+  padding: 18px;
+  min-height: 36%;
+  min-width: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  border-radius: 18px;
+}
+
+.input-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  column-gap: 18px;
+}
+
+input {
+  border-radius: 9px;
+  padding: 9px;
+  outline: none;
+  border: 1px solid grey;
+  font-size: 19px;
+}
+
+button {
+  border: 0.7px solid orange;
+  padding: 9px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: orange;
+}
+
+.grocery-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.grocery {
+  display: flex;
+  justify-content: space-between;
+  margin: 9px;
+  border-radius: 9px;
+  padding: 9px;
+  align-items: center;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 12px;
+}
+
+.custom-bg {
+  background-color: rgba(128, 128, 128, 0.1);
+}
