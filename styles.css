@@ -14,10 +14,16 @@ body {
   background-color: rgba(158, 210, 235, 0.5);
 }
 
+.title {
+  color: tomato;
+  margin-bottom: 18px;
+}
+
 .container {
-  padding: 18px;
-  min-height: 36%;
+  padding: 9px 18px;
+  min-height: 27%;
   min-width: 50%;
+  max-width: 90%;
   background-color: white;
   display: flex;
   justify-content: space-around;

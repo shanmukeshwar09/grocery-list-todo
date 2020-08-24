@@ -8,6 +8,9 @@ let current_items = [];
 const LOCAL_STORAGE_KEY = "local_storage";
 let local_storage_active = false;
 
+const updateLocalStorage = () =>
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(current_items));
+
 const add_Edit_func = () => {
   const value = input.value;
   if (value !== "") {
@@ -18,6 +21,12 @@ const add_Edit_func = () => {
       edit_element.classList.remove("custom-bg");
       current_type = "add";
       add_edit.innerHTML = "Add Item";
+      current_items = current_items.filter((e) => e.id !== parseFloat(edit_id));
+      current_items.push({
+        content: input.value,
+        id: window.performance.now(),
+      });
+      updateLocalStorage();
     }
   }
   input.value = "";
@@ -46,16 +55,14 @@ const addItem = (item, id) => {
 
   delete_button.addEventListener("click", (event) => {
     event.currentTarget.parentNode.parentNode.remove();
-    console.log(current_items);
-    console.log(
-      (current_items = current_items.filter(
-        (e) =>
-          e.id !==
-          parseFloat(event.currentTarget.parentNode.parentNode.childNodes[0].id)
-      ))
+
+    current_items = current_items.filter(
+      (e) =>
+        e.id !==
+        parseFloat(event.currentTarget.parentNode.parentNode.childNodes[0].id)
     );
 
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(current_items));
+    updateLocalStorage();
   });
 
   const button_grid = document.createElement("div");
@@ -78,7 +85,7 @@ const addItem = (item, id) => {
       id: id,
       content: item,
     });
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(current_items));
+    updateLocalStorage();
   }
 };
 
@@ -88,4 +95,3 @@ current_items.forEach((element) => {
   addItem(element.content, element.id);
 });
 local_storage_active = true;
-console.log(current_items);
